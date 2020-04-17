@@ -1,0 +1,108 @@
+=============cp1======================
+1. IDT:
+Zibo Lin is responsable for this part. 
+	At first, forget to add the assembly language wrapper.
+		Fixed soon by adding it.
+	Terminal can still accept input after exception.
+		Fixed soon by adding cli(); before while(1);
+
+2. RTC:
+Peter Cork
+	init incorrectly.
+		Fixed soon by using the correct IRQ.
+
+3.Paging:
+Jinghan Huang
+	Order of Initialization
+		Change Order of enabling 4MB and enabling paging
+
+4. PIC:
+Chao Xu
+	Mask interrupt incorrectly
+		Mask interrupt independently
+	
+
+
+============cp2=======================
+1. Terminal read
+Zibo Lin
+	Pressing "enter" can't read-in.
+		Fixed by adding a volatile flag to detect the "enter" pressing
+
+2. vertical scorlling
+Jinghan Huang
+	Can't work.
+		Fixed by writing a lot of codes in putc, keyboard interrupt handler, update_cursor and etc.
+
+3. Keyboard read-in
+Chao Xu
+	Upper case alphabet letter always followed by a lower case letter.
+		Fixed by init the key_map in .c file
+
+4.Typeing too fast
+All
+	If typing some chars just after pressing enter, the screen will print the chars at the beginning of new line which shouldn't.
+		Turn out not to be a bug since the provided "hello" program doed the same thing.
+
+5.rtc 
+Peter Cork
+	Weird page fault.
+		Fixed by rewriting the code.
+
+==============cp3=======================
+1.Halt
+Jinghan Huang
+	Exit the program incorrectly, page fault.
+		Fixed by changing the pcb_index remapping part.
+
+2.Execute
+Chao Xu
+	Parse arguement incorrectly.
+		Fixed
+
+
+==============cp4======================
+1. syserr5
+Jinghan Huang
+	Missing one validity check.
+		Added.
+
+2. grep fault
+Jinghan Huang
+	Missing validity check
+		Added
+
+3.Pingpong page fault
+Jinghan Huang
+	add the rtc_ops_init in the file.c 
+
+4.verylongtextwithverylongfilename.txt
+Jinghan Huang
+	implement extra function: arguement "verylongtextwithverylongfilename.txt' can be used as well.
+		deleted
+
+
+=============cp5================================
+1.Running any program for 19 times guarantees a page fault
+Jinghan Huang & Zibo Lin 
+	halt doesn't change the tss.esp0 correctly, fixed.
+
+2.schedule can't work
+Jinghan Huang & Zibo Lin & Peter Cork
+	Add operations on the tss
+
+3.switch terms cause scheduling error
+Jinghan Huang
+	launch all the 3 terms when init the scheduling
+
+4.switch terms can't read arguement correctly
+Jinghan Huang & Zibo Lin
+	Fixed by changing the sequence of two lines
+
+
+=============EC================================
+1.Mouse
+Chao Xu
+Mouse has some problems in switching terminals and vertical scrolling
+	Switch mouse informations when switching
+	

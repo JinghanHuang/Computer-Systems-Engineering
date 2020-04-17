@@ -1,0 +1,31 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+itr_hdl.o: itr_hdl.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+file.o: file.c file.h types.h lib.h system_call.h pcb.h rtc.h
+i8259.o: i8259.c i8259.h types.h lib.h
+idt.o: idt.c idt.h x86_desc.h types.h lib.h i8259.h keyboard.h mouse.h \
+  rtc.h file.h itr_hdl.h schedule.h system_call.h pcb.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  tests.h paging.h rtc.h file.h keyboard.h mouse.h idt.h terminal.h pcb.h \
+  system_call.h multi_terminal.h schedule.h
+keyboard.o: keyboard.c keyboard.h types.h i8259.h lib.h terminal.h file.h \
+  multi_terminal.h
+lib.o: lib.c lib.h types.h keyboard.h multi_terminal.h schedule.h \
+  system_call.h pcb.h file.h
+mouse.o: mouse.c mouse.h types.h lib.h i8259.h terminal.h keyboard.h \
+  file.h multi_terminal.h
+multi_terminal.o: multi_terminal.c multi_terminal.h types.h keyboard.h \
+  lib.h system_call.h pcb.h file.h paging.h x86_desc.h schedule.h
+paging.o: paging.c paging.h types.h lib.h
+pcb.o: pcb.c pcb.h types.h file.h lib.h system_call.h
+rtc.o: rtc.c rtc.h types.h file.h lib.h i8259.h multi_terminal.h \
+  keyboard.h schedule.h system_call.h pcb.h
+schedule.o: schedule.c schedule.h types.h system_call.h pcb.h file.h \
+  lib.h i8259.h multi_terminal.h keyboard.h paging.h x86_desc.h
+system_call.o: system_call.c system_call.h types.h pcb.h file.h lib.h \
+  rtc.h terminal.h keyboard.h paging.h x86_desc.h multi_terminal.h \
+  schedule.h
+terminal.o: terminal.c terminal.h types.h keyboard.h file.h lib.h i8259.h \
+  multi_terminal.h schedule.h system_call.h pcb.h
+tests.o: tests.c tests.h types.h x86_desc.h lib.h paging.h file.h \
+  terminal.h keyboard.h rtc.h system_call.h pcb.h
